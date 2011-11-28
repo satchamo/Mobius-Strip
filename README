@@ -1,0 +1,7 @@
+Yes, you were right, my strip didn't work with culling.
+
+I drew the mesh twice, with a set of normals *and* texture coords for each strip, and it looks good.
+
+To build:
+make
+./mobius
