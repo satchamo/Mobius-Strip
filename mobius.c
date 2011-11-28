@@ -201,7 +201,6 @@ void drawMesh(int opp){
     for (; i < NUM_STRIPS-1; i++, offset += INDICES_PER_STRIP*sizeof(GLushort)){
         glDrawElements(GL_TRIANGLE_STRIP, INDICES_PER_STRIP, GL_UNSIGNED_SHORT, (GLvoid*) offset);
     }
-
 }
 
 void reshape(int w, int h) {
@@ -210,7 +209,6 @@ void reshape(int w, int h) {
     glLoadIdentity();
     gluPerspective(40, ((double)(w)/(double)(h)), hither, yon );
 }
-
 
 void getTexture(){
     //glPixelStorei(GL_PACK_ALIGNMENT, 1);
@@ -231,12 +229,13 @@ void display(void) {
         createMeshStrips(4, 14);
         createMeshStripIndices();
     }
-    // nothing to cull
+
+    // Draw front
     glEnable(GL_CULL_FACE);
     glFrontFace(GL_CW);
     glCullFace(GL_BACK);  
     drawMesh(0);
-    //glFrontFace(GL_CW);
+    // Draw back
     glCullFace(GL_FRONT);  
     drawMesh(1);
     setView();
